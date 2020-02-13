@@ -1,122 +1,248 @@
+* {
+    box-sizing: border-box;
+}
+
 :root {
-    --dark: #212121;
-    --light: #e0e0e0;
+    --white: #ffffff;
+    --black: #000000;
+}
+
+.element-invisible {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
 }
 
 body {
+    font-size: 1.5rem;
+    width: 90%;
+    margin: 3vh auto;
     font-family: monospace;
-    font-size: 16px;
-    color: var(--light);
+    color: var(--white);
 }
 
-.content {
-    display: grid;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw 10vw 10vw 10vw 10vw;
-    grid-template-rows: 10vh 10vh 10vh 10vh 10vh 10vh 10vh 10vh 10vh 10vh;
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    line-height: 1.1em;
 }
 
-.section-1 {
-    display: grid;
-    grid-gap: 1px;
-    grid-template-columns: repeat(4, [col] 14%);
-    grid-template-rows: repeat(4, [row] auto);
-}
-
-.page-header {
-    grid-column: col 4 / span 3;
-    grid-row: row 1;
-    font-size: 60px;
-    font-weight: 600;
-    text-align: right;
-    margin-top: 0;
-}
-
-.title-1 {
-    grid-column: col 4 / span 2;
-    grid-row: row 2;
-    font-size: 30px;
-    font-weight: 500;
+ul {
+    padding: 0;
     margin: 0;
-    animation: float 2s infinite ease-in-out;
 }
 
-.description-1 {
-    grid-column: col 4 / span 2;
-    grid-row: row 3;
-    z-index: 1;
-    font-weight: bold;
+li {
+    list-style-type: none;
+    padding: 10px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.4);
+    line-height: 1.2;
+}
+
+h3 {
     margin: 0;
-    animation: float 3s infinite ease-in-out;
-    display: none;
+    font-size: 0.7em;
 }
 
-.temple-img {
-    grid-column: col 2 / span 2;
+h4 {
+    margin: 0;
+    font-size: 0.7em;
+    padding: 2px;
+}
+
+h5 {
+    margin: 0;
+    font-size: 0.6em;
+}
+
+p {
+    margin: 0;
+    font-size: 0.6em;
+}
+
+ul {
+    display: grid;
+    grid-template-rows: repeat(8, auto);
+    grid-template-columns: repeat(6, 1fr);
+}
+
+li:nth-child(1) {
+    grid-row: 1;
+    grid-column: 3;
+    animation: pulse 2s infinite, float 1.8s infinite linear;
+}
+
+li:nth-child(2) {
+    grid-row: 2;
+    grid-column: 1;
+    animation: pulse .5s infinite;
+}
+
+li:nth-child(3) {
+    grid-row: 2;
+    grid-column: 6;
+    animation: float-horizontal-left 4s infinite;
+}
+
+li:nth-child(4) {
     grid-row: 3;
-    max-height: 300px;
-    width: auto;
-    float: right;
-    animation: float 1.8s infinite linear both;
+    grid-column: 3;
+    animation: float-horizontal-left 3s infinite ease-in-out;
 }
 
-.title-2 {
-    grid-column: col 4 / span 2;
-    grid-row: row 4;
-    font-size: 30px;
-    font-weight: 500;
-    margin: 0;
-    animation: float 4s infinite ease-in-out;
+li:nth-child(5) {
+    grid-row: 3;
+    grid-column: 5;
+    animation: float-vertical-down 2s infinite ease-in-out;
 }
 
-.description-2 {
-    grid-column: col 6 / span 2;
-    grid-row: row 3;
-    z-index: 1;
-    font-weight: bold;
-    margin: 0;
-    animation: float 3s infinite ease-in-out;
-    display: none;
+li:nth-child(6) {
+    grid-row: 4;
+    grid-column: 1;
+    animation: float-vertical-down 4s infinite ease-in-out;
 }
 
-.title-1:hover + .description-1 {
-    transition: ease;
-    display: block;
+li:nth-child(7) {
+    grid-row: 5;
+    grid-column: 4;
+    animation: pulse 4s infinite, float 4s infinite linear;
 }
 
-.title-2:hover + .description-2 {
-    transition: ease;
-    display: block;
+li:nth-child(8) {
+    grid-row: 5;
+    grid-column: 6;
+    animation: float-horizontal-left 6s infinite;
+}
+
+li:nth-child(9) {
+    grid-row: 6;
+    grid-column: 2;
+    animation: pulse 3s infinite, float-horizontal-right 4s infinite ease-in-out;
+}
+
+li:nth-child(10) {
+    grid-row: 7;
+    grid-column: 4;
+    animation: float-horizontal-left 2s infinite ease-in-out;
+}
+
+li:nth-child(11) {
+    grid-row: 7;
+    grid-column: 6;
+    animation: float-across 15s infinite;
 }
 
 .bg {
-    animation:slide 5s ease-in-out infinite alternate;
+    animation: slide 3s ease-in-out infinite alternate;
     background-image: linear-gradient(-60deg, #1b262c 50%, #0f4c75 50%);
-    bottom:0;
-    left:-50%;
-    opacity:.5;
-    position:fixed;
-    right:-50%;
-    top:0;
-    z-index:-1;
+    bottom: 0;
+    left: -50%;
+    opacity: .5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
 }
 
 .bg2 {
-    animation-direction:alternate-reverse;
-    animation-duration:6s;
+    animation-direction: alternate-reverse;
+    animation-duration: 5s;
 }
 
 .bg3 {
-    animation-duration:7s;
+    animation-duration: 7s;
 }
 
 @keyframes slide {
-    0% { transform:translateX(-25%); }
-    100% { transform:translateX(25%); }
+    0% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(25%);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 25px rgba(0, 0, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
 }
 
 @keyframes float {
-    from    { transform: rotate(0deg) translate3d(10px, 0, 0) rotate(0deg); }
-    to      { transform: rotate(360deg) translate3d(10px, 0, 0) rotate(-360deg); }
+    from {
+        -webkit-transform: rotate(0deg) translate3d(30px, 0, 0) rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg) translate3d(30px, 0, 0) rotate(-360deg);
+    }
+}
+
+@keyframes float-vertical-up {
+    from {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(0, -60px);
+    }
+    to {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes float-vertical-down {
+    from {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(0, 60px);
+    }
+    to {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes float-horizontal-right {
+    from {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(60px, 0);
+    }
+    to {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes float-horizontal-left {
+    from {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-60px, 0);
+    }
+    to {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes float-across {
+    from {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-70vw, -90vh);
+    }
+    to {
+        transform: translate(0, 0);
+    }
 }
