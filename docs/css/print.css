@@ -1,0 +1,99 @@
+:root {
+    --black: #000000;
+}
+
+@media print {
+    body {
+        color: var(--black);
+        background-color: #ffffff;
+        font-family: "Arial";
+        background-image: unset;
+        display: grid;
+    }
+
+    h1 {
+        visibility: hidden;
+        position: relative;
+    }
+
+    h1:after {
+        font-family: "Arial";
+        visibility: visible;
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "Menu Items";
+        font-size: 20px;
+        color: var(--black);
+    }
+
+    section[content] section[header] {
+        padding: 1em;
+    }
+
+    section[content] section[main] {
+        padding: 0;
+    }
+
+    label[id="turn-on"],
+    ul[rain],
+    span[subtitle],
+    section[footer] {
+        display: none;
+    }
+
+    #state-1:checked + label img[menu-img],
+    #state-2:checked + label img[menu-img],
+    #state-3:checked + label img[menu-img],
+    #state-4:checked + label img[menu-img],
+    #state-5:checked + label img[menu-img],
+    section[main] label:hover img[menu-img] {
+        animation: unset;
+    }
+
+    section[main] label {
+        padding: 0;
+    }
+
+    section[main] label:hover {
+        animation: none;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    div[sushi-table], div[content-table] {
+        border: none;
+        background-image: none;
+    }
+
+    div[item-content] {
+        padding: 1em;
+        opacity: 1;
+        grid-row: unset;
+        grid-template-columns: repeat(2, auto);
+    }
+
+    img[item-img] {
+        height: 100px;
+        width: auto;
+        min-width: unset;
+        grid-row: 1 / 2;
+    }
+
+    h3[item-title] {
+        font-size: 18px;
+    }
+
+    p[item-description] {
+        font-size: 12px;
+        font-weight: lighter;
+        padding-bottom: 1em;
+    }
+
+    span[item-price] {
+        font-size: 18px;
+    }
+
+}

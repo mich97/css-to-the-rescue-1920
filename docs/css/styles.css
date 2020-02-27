@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
 @font-face {
     font-family: 'HandDrawnShapes';
     font-style: normal;
@@ -8,9 +10,9 @@
 :root {
     --white: #ffffff;
     --black: #000000;
-    --dark-brown: #4e342e;
-    --blue: #90caf9;
-    --light-blue: #bbdefb;
+    --dark-grey: #212121;
+    --dark-brown: #5d4037;
+    --light-brown: #fff3e0;
 }
 
 * {
@@ -19,119 +21,163 @@
 }
 
 body {
-    font-family: 'HandDrawnShapes', sans-serif;
-    color: var(--white);
-    background-color: var(--blue);
+    font-family: 'Lobster', sans-serif;
+    color: var(--dark-grey);
     width: 100%;
     height: 100vh;
+    background-color: var(--light-brown);
+    background-image: repeating-linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.5),
+            rgba(255, 255, 255, 0.5) 100px,
+            transparent 0px,
+            transparent 200px
+    ),
+    repeating-linear-gradient(
+            -45deg,
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.1) 100px,
+            transparent 0px,
+            transparent 200px
+    );
+    display: grid;
+    margin: 0;
 }
 
-.content {
+h1, label[id="turn-on"], section[footer] {
+    text-align: center;
+}
+
+div[checkbox-container] {
+    text-align: center;
+}
+
+label[id="turn-on"] {
+    font-size: 1.5em;
+    padding: 5px;
+}
+
+label[id="turn-on"]:hover {
+    cursor: pointer;
+    background-color: var(--light-brown);
+    transition: .4s;
+}
+
+section[footer] {
+    text-align: center;
+}
+
+p[footer-text] {
+    font-size: 1.5em;
+    padding-bottom: 10px;
+}
+
+section[content] {
     z-index: 3;
     width: 100%;
     height: 100vh;
     position: absolute;
 }
 
-.content .header {
-    padding: 2em;
+section[content] section[header] {
+    padding: 1em;
     padding-bottom: 0 !important;
     max-width: 1164px;
     margin: auto;
 }
 
-.content .header h1 {
+section[content] section[header] h1 {
     font-size: 50px;
 }
 
-.content .main {
-    padding: 2em;
+section[content] section[main] {
+    padding: 1em;
     display: grid;
-    grid-template-columns: repeat(5, auto);
-    grid-template-rows: repeat(2);
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, auto);
     max-width: 1164px;
     margin: auto;
     row-gap: 1em;
 }
 
-.main [type=radio] {
+section[main] [type=radio] {
     display: none;
 }
 
-.main label {
+section[main] label {
     text-align: center;
     padding: 1em;
     z-index: 5;
 }
 
-.main label:hover {
-    /*background-color: rgba(255, 225, 255, 0.3);*/
-    /*border-radius: 10px;*/
+section[main] label:hover {
+    background-color: rgba(255, 225, 255, 0.3);
+    border-radius: 10px;
     cursor: pointer;
+    transition: .4s;
+}
+
+section[main] label:hover img[menu-img] {
     animation: bounce 0.7s infinite;
 }
 
-.item-content {
+div[item-content] {
     opacity: 0;
-    transition: ease-in-out;
+    transition: 1s;
 }
 
-#state-1:checked ~ div:nth-of-type(2) {
-    opacity: 1;
-}
-
-#state-2:checked ~ div:nth-of-type(3) {
-    opacity: 1;
-}
-
-#state-3:checked ~ div:nth-of-type(4) {
-    opacity: 1;
-}
-
-#state-4:checked ~ div:nth-of-type(5) {
-    opacity: 1;
-}
-
+#state-1:checked ~ div:nth-of-type(2),
+#state-2:checked ~ div:nth-of-type(3),
+#state-3:checked ~ div:nth-of-type(4),
+#state-4:checked ~ div:nth-of-type(5),
 #state-5:checked ~ div:nth-of-type(6) {
     opacity: 1;
 }
 
-.main label:nth-of-type(1) {
+#state-1:checked + label img[menu-img],
+#state-2:checked + label img[menu-img],
+#state-3:checked + label img[menu-img],
+#state-4:checked + label img[menu-img],
+#state-5:checked + label img[menu-img] {
+    animation: bounce 0.7s infinite;
+}
+
+section[main] label:nth-of-type(1) {
     grid-column: 1;
     grid-row: 1;
 }
 
-.main label:nth-of-type(2) {
+section[main] label:nth-of-type(2) {
     grid-column: 2;
     grid-row: 1;
 }
 
-.main label:nth-of-type(3) {
+section[main] label:nth-of-type(3) {
     grid-column: 3;
     grid-row: 1;
 }
 
-.main label:nth-of-type(4) {
+section[main] label:nth-of-type(4) {
     grid-column: 4;
     grid-row: 1;
 }
 
-.main label:nth-of-type(5) {
+section[main] label:nth-of-type(5) {
     grid-column: 5;
     grid-row: 1;
 }
 
-.menu-img {
+img[menu-img] {
     width: 50px;
     height: auto;
-    filter:drop-shadow(1px 1px 0 var(--white)) drop-shadow(-1px -1px 0 var(--white));
+    filter: drop-shadow(1px 1px 0 var(--white)) drop-shadow(-1px -1px 0 var(--white));
 }
 
-.menu-title {
+h3[menu-title] {
     display: block;
 }
 
-.sushi-table {
+div[sushi-table] {
     grid-column: 1 / 6;
     grid-row: 1;
     background-image: url("../img/wood.jpg");
@@ -140,7 +186,7 @@ body {
     opacity: 0.8;
 }
 
-.content-table {
+div[content-table] {
     grid-column: 1 / 6;
     grid-row: 2;
     background-image: url("../img/wood.jpg");
@@ -149,48 +195,45 @@ body {
     opacity: 0.8;
 }
 
-.item-content {
+div[item-content] {
     padding: 2em;
     grid-column: 1 / 6;
     grid-row: 2;
     z-index: 5;
-    /*height: 50vh;*/
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(1);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /*grid-template-rows: repeat(1, auto);*/
     grid-gap: 1em;
 }
 
-.item-img {
-    grid-column: 1 / 2;
-    grid-row: 1 / 4;
-    height: 400px;
-    width: auto;
+img[item-img] {
+    height: auto;
+    width: 50%;
     margin: auto;
-    filter:drop-shadow(3px 3px 0 var(--white)) drop-shadow(-3px -3px 0 var(--white));
+    filter: drop-shadow(3px 3px 0 var(--white)) drop-shadow(-3px -3px 0 var(--white));
 }
 
-.item-text {
-    grid-column: 2 / 3;
-    grid-row: 1;
+div[item-text] {
+    /*grid-column: 2 / 3;*/
+    /*grid-row: 1;*/
 }
 
-.item-title {
+h3[item-title] {
     font-size: 3em;
 }
 
-.item-description {
+p[item-description] {
     font-size: 1.5em;
     font-weight: lighter;
     padding-bottom: 1em;
 }
 
-.item-price {
+span[item-price] {
     font-size: 3em;
 }
 
 /* Animated background */
-.rain {
+ul[rain] {
     position: absolute;
     top: 0;
     left: 0;
@@ -200,74 +243,130 @@ body {
     z-index: -5;
 }
 
-.rain li {
+ul[rain] li {
     position: absolute;
     display: block;
     list-style: none;
     top: -150px;
 }
 
-.sushi-drop {
+img[sushi-drop] {
     width: 50px;
     height: auto;
 }
 
-#make-rain:checked ~ .rain li {
-    animation: animate 25s linear infinite;
+#make-rain:checked ~ ul[rain] li {
+    animation: rain 25s linear infinite;
+    transition: 1s;
 }
 
-#make-rain:checked ~ .rain li:nth-child(1) {
+#make-rain {
+    display: none;
+}
+
+#make-rain:checked ~ ul[rain] li:nth-child(1) {
     left: 25%;
+    animation-delay: 17s;
+    animation-duration: 11s;
 }
 
-#make-rain:checked ~ .rain li:nth-child(2) {
+#make-rain:checked ~ ul[rain] li:nth-child(2) {
+    left: 15%;
+    animation-delay: 6s;
+}
+
+#make-rain:checked ~ ul[rain] li:nth-child(3) {
     left: 10%;
     animation-delay: 2s;
     animation-duration: 12s;
 }
 
-#make-rain:checked ~ .rain li:nth-child(3) {
+#make-rain:checked ~ ul[rain] li:nth-child(4) {
+    left: 23%;
+    animation-delay: 9s;
+    animation-duration: 11s;
+}
+
+#make-rain:checked ~ ul[rain] li:nth-child(5) {
     left: 70%;
     animation-delay: 4s;
 }
 
-#make-rain:checked ~ .rain li:nth-child(4) {
+#make-rain:checked ~ ul[rain] li:nth-child(6) {
+    left: 30%;
+    animation-delay: 3s;
+    animation-duration: 10s;
+}
+
+#make-rain:checked ~ ul[rain] li:nth-child(7) {
     left: 40%;
     animation-duration: 18s;
 }
 
-#make-rain:checked ~ .rain li:nth-child(5) {
+#make-rain:checked ~ ul[rain] li:nth-child(8) {
+    left: 37%;
+    animation-delay: 11s;
+    animation-duration: 11s;
+}
+
+#make-rain:checked ~ ul[rain] li:nth-child(9) {
     left: 65%;
+    animation-delay: 8s;
 }
 
-#make-rain:checked ~ .rain li:nth-child(6) {
+#make-rain:checked ~ ul[rain] li:nth-child(10) {
+    left: 45%;
+}
+
+#make-rain:checked ~ ul[rain] li:nth-child(11) {
     left: 75%;
-    animation-delay: 3s;
+    animation-delay: 4s;
+    animation-duration: 9s;
 }
 
-#make-rain:checked ~ .rain li:nth-child(7) {
+#make-rain:checked ~ ul[rain] li:nth-child(12) {
+    left: 55%;
+    animation-delay: 20s;
+}
+
+#make-rain:checked ~ ul[rain] li:nth-child(13) {
     left: 35%;
     animation-delay: 7s;
 }
 
-#make-rain:checked ~ .rain li:nth-child(8) {
+#make-rain:checked ~ ul[rain] li:nth-child(14) {
+    left: 70%;
+    animation-delay: 23s;
+}
+
+#make-rain:checked ~ ul[rain] li:nth-child(15) {
     left: 50%;
     animation-delay: 15s;
     animation-duration: 45s;
 }
 
-#make-rain:checked ~ .rain li:nth-child(9) {
+#make-rain:checked ~ ul[rain] li:nth-child(16) {
+    left: 72%;
+    animation-delay: 15s;
+}
+
+#make-rain:checked ~ ul[rain] li:nth-child(17) {
     left: 20%;
     animation-delay: 2s;
     animation-duration: 35s;
 }
 
-#make-rain:checked ~ .rain li:nth-child(10) {
+#make-rain:checked ~ ul[rain] li:nth-child(18) {
+    left: 80%;
+    animation-delay: 16s;
+}
+
+#make-rain:checked ~ ul[rain] li:nth-child(19) {
     left: 85%;
     animation-duration: 11s;
 }
 
-@keyframes animate {
+@keyframes rain {
     0% {
         transform: translateY(0) rotate(0deg);
     }
