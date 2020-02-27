@@ -5,7 +5,7 @@
 
 
 ## Features
-Users can click on each of the menu items to display it's description and price in the main content section. The page could also be printed out, showing only necessary elements. And click on the '> Make it rain <' button above triggers a cool animation.
+Users can click on each of the menu items to display it's description and price in the main content section. The page could also be printed out, showing only necessary elements. And clicking on the '> Make it rain <' button above triggers an animation.
 
 
 ## Process
