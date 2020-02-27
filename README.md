@@ -2,6 +2,8 @@
 
 ![Image of preview](./course/preview.png)
 
+## Live demo
+[Live link](https://mich97.github.io/css-to-the-rescue-1920/)
 
 
 ## Features
